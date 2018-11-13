@@ -2,13 +2,14 @@ from Ball import ball
 from Obstacles import obstacles
 
 def setup():
-    global first_click, released, player, lines, level
+    global first_click, released, player, lines, level, mouse_origin
     size(1366, 768)
     first_click = True
     released = True
     player = ball()
     lines = obstacles()
     level = 1
+    mouse_origin = PVector(0, 0)
 
 def draw():
     background(127)
@@ -20,7 +21,8 @@ def draw():
     strokeWeight(2)
     fill(255)
     rect(1291, 593, 50, 150)
-    for i in range(
+    for i in range(150):
+        
     player.hit_ball()
     lines.check_boundary_collision(player)
     lines.check_obstacle_collision(player, level)
