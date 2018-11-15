@@ -2,9 +2,18 @@ from Ball import ball
 
 class obstacles:
     def check_boundary_collision(self, player):
-        if player.location.x - 25 <= 0 or player.location.x + 25 >= 1366:
+        if player.location.x - 50 <= 0:
+            player.location.x = 50
             player.velocity.x *= -1
-        if player.location.y - 25 <= 0 or player.location.y + 25 >= 768:
+        elif player.location.x + 50 >= 1366:
+            player.location.x = 1316
+            player.velocity.x *= -1
+            
+        if player.location.y - 50 <= 0 :
+            player.location.y = 50
+            player.velocity.y *= -1
+        elif player.location.y + 50 >= 768:
+            player.location.y = 718
             player.velocity.y *= -1
     
     def display_lines(self, level):
