@@ -21,7 +21,7 @@ class obstacles:
             line(i[0], i[1], i[2], i[3])
     
     def check_obstacle_collision(self, player, level):
-        buffer = player.velocity.x * 0.7
+        buffer = abs(player.velocity.x * 0.7)
         for i in obstacle_list:
             if dist(i[0], i[1], i[2], i[3]) <= dist(player.location.x, player.location.y, i[0], i[1]) + dist(player.location.x, player.location.y, i[2], i[3]) < dist(i[0], i[1], i[2], i[3]) + buffer:
                 player.velocity.x *= -1
