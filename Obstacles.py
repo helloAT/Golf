@@ -24,6 +24,10 @@ class obstacles:
         buffer = abs(player.velocity.x * 0.7)
         for i in obstacle_list:
             if dist(i[0], i[1], i[2], i[3]) <= dist(player.location.x, player.location.y, i[0], i[1]) + dist(player.location.x, player.location.y, i[2], i[3]) < dist(i[0], i[1], i[2], i[3]) + buffer:
+                if player.velocity.x > 0:
+                    player.location.x -= 5
+                else:
+                    player.location.x += 5
                 player.velocity.x *= -1
         
         if dist(player.location.x, player.location.y, width * 11/12, 100) <= 50:
