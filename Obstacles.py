@@ -2,18 +2,18 @@ from Ball import ball
 
 class obstacles:
     def check_boundary_collision(self, player):
-        if player.location.x - 50 <= 0:
-            player.location.x = 50
+        if player.location.x - 25 <= 0:
+            player.location.x = 26
             player.velocity.x *= -1
-        elif player.location.x + 50 >= 1366:
-            player.location.x = 1316
+        elif player.location.x + 25 >= 1366:
+            player.location.x = width - 26
             player.velocity.x *= -1
             
-        if player.location.y - 50 <= 0 :
-            player.location.y = 50
+        if player.location.y - 25 <= 0 :
+            player.location.y = 26
             player.velocity.y *= -1
-        elif player.location.y + 50 >= 768:
-            player.location.y = 718
+        elif player.location.y + 25 >= 768:
+            player.location.y = height - 26
             player.velocity.y *= -1
     
     def display_lines(self, level):
@@ -30,14 +30,16 @@ class obstacles:
             line(i[0], i[1], i[2], i[3])
     
     def check_obstacle_collision(self, player, level):
-        buffer = abs(player.velocity.x * 0.7)
+        buffer = abs(player.velocity.x * 0.6)
+        if buffer < 5:
+            buffer = 5
         for i in obstacle_list:
             if dist(i[0], i[1], i[2], i[3]) <= dist(player.location.x, player.location.y, i[0], i[1]) + dist(player.location.x, player.location.y, i[2], i[3]) < dist(i[0], i[1], i[2], i[3]) + buffer:
-                if player.velocity.x > 0:
-                    player.location.x -= 5
-                else:
-                    player.location.x += 5
                 player.velocity.x *= -1
+                if player.velocity.x > 0:
+                    player.location.x += 2
+                else:
+                    player.location.x -= 2
         
         if dist(player.location.x, player.location.y, width * 11/12, 100) <= 50:
             player.location = PVector(51, 51)
