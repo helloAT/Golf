@@ -1,5 +1,6 @@
 from Ball import ball
 from Obstacles import obstacles
+from Menu import menu
 
 def setup():
     global first_click, released, player, lines, level, mouse_origin, strength
@@ -8,21 +9,23 @@ def setup():
     released = True
     player = ball()
     lines = obstacles()
-    level = 1
+    level = 0
     mouse_origin = PVector(0, 0)
     strength = 0
 
 def draw():
     global strength
-    background(127)
-    lines.display_lines(1)
+    background(0, 255, 0)
+    menu(level)
+    '''
+    lines.display_lines(level)
     if not released:
         strokeWeight(2)
         line(mouse_origin.x, mouse_origin.y, mouseX, mouseY)
     player.display_ball()
     strokeWeight(2)
     fill(255)
-    rect(1291, 593, 50, 150)
+    rect(1281, 583, 60, 160)
     for i in range(int(strength * 140 / 75)):
         if i > 70:
             i -= 70
@@ -58,3 +61,4 @@ def mouseReleased():
     if player.velocity.y > 75 or player.velocity.y < -75:
         player.velocity.y = abs(player.velocity.y) / player.velocity.y * 75
     strength = 0
+'''
