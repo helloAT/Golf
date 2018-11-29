@@ -16,8 +16,6 @@ def setup():
 def draw():
     global strength
     background(0, 255, 0)
-    menu(level)
-    '''
     lines.display_lines(level)
     if not released:
         strokeWeight(2)
@@ -38,6 +36,9 @@ def draw():
     player.hit_ball()
     lines.check_boundary_collision(player)
     lines.check_obstacle_collision(player, level)
+    if level == 0:
+        menu()
+
 
 def mouseDragged():
     global first_click, mouse_origin, released, strength
@@ -61,4 +62,8 @@ def mouseReleased():
     if player.velocity.y > 75 or player.velocity.y < -75:
         player.velocity.y = abs(player.velocity.y) / player.velocity.y * 75
     strength = 0
-'''
+
+def mousePressed():
+    global level
+    if level == 0 and 610 <= mouseX <= 759 and 347 <= mouseY <= 421:
+        level += 1
