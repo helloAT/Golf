@@ -19,7 +19,10 @@ class obstacles:
     def display_lines(self, level):
         strokeWeight(5)
         global obstacle_list
-        if level == 1:
+        if level == 0:
+            obstacle_list = []
+
+        elif level == 1:
             obstacle_list = [[width * 1/6, 0, width * 1/6, height - 100], [width * 2/6, 100, width * 2/6, height], [width * 3/6, 0, width * 3/6, height - 100], [width * 4/6, 100, width * 4/6, height], [width * 5/6, 0, width * 5/6, height - 100]]
             fill(0)
             ellipse(width * 11/12, 100, 75, 75)
